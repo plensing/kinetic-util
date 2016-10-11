@@ -1,6 +1,7 @@
 #include <kinetic/kinetic.h>
 #include <iostream>
 #include <iomanip>
+#include <set>
 
 using std::string;
 
