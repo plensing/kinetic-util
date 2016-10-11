@@ -179,7 +179,7 @@ int main(int argc, char** argv)
   if (config.operations.erase(OpType::scan)) {
     std::unique_ptr<string> last_handled;
     std::unique_ptr<std::vector<string>> faulty;
-    if (!con->MediaScan(config.start_key, config.end_key, kinetic::RequestPriority::Priority_NORMAL,
+    if (!con->MediaScan(config.start_key, true, config.end_key, true, 100,
                         last_handled, faulty).ok() || !last_handled) {
       std::cout << "Failed MediaScan request" << std::endl;
       return EXIT_FAILURE;
@@ -196,7 +196,7 @@ int main(int argc, char** argv)
 
   if (config.operations.erase(OpType::optimize)) {
     std::unique_ptr<string> last_handled;
-    if(! con->MediaOptimize(config.start_key,config.end_key,kinetic::RequestPriority::Priority_NORMAL,
+    if(! con->MediaOptimize(config.start_key, true, config.end_key, true,
                             last_handled).ok() || !last_handled) {
       std::cout << "Failed MediaOptimize request" << std::endl;
       return EXIT_FAILURE;
